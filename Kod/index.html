@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html lang="sv">
 
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"
-		/>
-		<link rel="stylesheet" href="style.css" />
-		<meta name="description" content="Testa dina webbdesignidéer. Få inspiration av färdiga alternativ och gör egna ändringar"
-		/>
-		<meta name="keywords" content="css, designmall, layoutmall, färgtema"
-		/>
-		<script>
-            document.createElement("header");
-            document.createElement("hgroup");
-            document.createElement("footer");
-            document.createElement("article");
-            document.createElement("main");
-            document.createElement("section");
-            document.createElement("nav");
-            document.createElement("aside");
-            document.createElement("address");
-		</script>
-		<title>Mallgrodan</title>
-	</head>
-	<body>
-	<div class="container">
-            <header>
-                <h1>Mallgrodan</h1>
-            </header>
-            <main>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="description" content="Testa dina webbdesignidéer. Få inspiration av färdiga alternativ och gör egna ändringar" />
+    <meta name="keywords" content="css, designmall, layoutmall, färgtema" />
+    <script>
+        document.createElement("header");
+        document.createElement("hgroup");
+        document.createElement("footer");
+        document.createElement("article");
+        document.createElement("main");
+        document.createElement("section");
+        document.createElement("nav");
+        document.createElement("aside");
+        document.createElement("address");
+    </script>
+    <title>Mallgrodan</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mallgrodan</h1>
+        </header>
+        <main>
                 <section id="result">
-                	Här kommer resultatet av html- och csskod att visas
                 	<iframe id="iframeResult"></iframe>
                 	</section>
                 <section id="html"> </section>
-                <section id="css"></section>
+                <section id="css">
+                    <textarea id="textareaCss" name="testareaCss" cols="50" rows="10"></textarea>
+                    <button id="buttonUpdateCss" type="button">Uppdatera</button>
+                </section>
             </main>
-		<footer>
-			<p>
-				Copyright &copy; 2014 Mallgrodan
-			</p>
-		</footer>
-		</div>
-		<script src="jquery-2.0.3.js"></script>
-		<script src="script.js"></script>
-	</body>
+        <footer>
+            <p>
+                Copyright &copy; 2014 Mallgrodan
+            </p>
+        </footer>
+    </div>
+    <script src="jquery-2.0.3.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
