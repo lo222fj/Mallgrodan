@@ -17,27 +17,17 @@ function loadCss(codeCss) {
     $('#textareaCss').val(htmlEncode(codeCss));
 }
 
-
 function loadResult(codeHtml, codeCss) {
-    console.log(codeHtml);
-    console.log(codeCss);
-    var iframeResult = document.getElementById('iframeResult');
 
+    var iframeResult = document.getElementById('iframeResult');
     iframeResult.srcdoc = codeHtml;
 
     setTimeout(function () {
         iframeResult.contentDocument.head.appendChild(document.createElement("style"));
 
-        var tmp = iframeResult.contentDocument.getElementsByTagName('style');
-        console.log(tmp);
-        tmp[0].innerHTML = codeCss;
-        //tmp[0].innerHTML="body {background-color:green}";
-        console.log($(document.getElementsByTagName('iframe')[0].contentDocument).find('style'));
-        //$(document.getElementsByTagName('iframe')[0].contentDocument).find('style').text('body {color:green}')
-    }, 200);
-
-    //console.log(iframeResult);
-    //document.getElementById('iframeResult').innerHTML='<h1>Plupp</h1>';
+        var styleTag = iframeResult.contentDocument.getElementsByTagName('style');
+        styleTag[0].innerHTML = codeCss;
+    }, 300);
 }
 
 function loadHtmlDoc() {
@@ -64,20 +54,19 @@ function loadHtmlDoc() {
 //Läser in defaultmallen för css
 function loadCssDoc() {
     var xmlhttp;
+
     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest();
     } else {// code for IE6, IE5
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
+
     var codeCss;
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-
-            //document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
             codeCss = xmlhttp.responseText;
             loadCss(codeCss);
             console.log("laddat css");
-
         }
     }
     //Sista parametern i .open är ändrad från true (asynkron hämtning) till false för att resultatet
@@ -91,7 +80,7 @@ function loadCssDoc() {
 }
 
 window.onload = function () {
-    //loadHtml();
+
     var codeHtml = loadHtmlDoc();
     var codeCss = loadCssDoc();
     loadResult(codeHtml, codeCss);
@@ -100,5 +89,4 @@ window.onload = function () {
         var codeCss = $('#textareaCss').val();
         loadResult(codeHtml, codeCss);
     });
-
 }
