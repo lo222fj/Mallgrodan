@@ -18,9 +18,9 @@ function loadCss(codeCss) {
 }
 
 function loadResult(codeHtml, codeCss) {
-
+    
     var iframeResult = document.getElementById('iframeResult');
-    iframeResult.srcdoc = codeHtml;
+    //iframeResult.srcdoc = codeHtml;
 
     setTimeout(function () {
         iframeResult.contentDocument.head.appendChild(document.createElement("style"));
@@ -88,5 +88,13 @@ window.onload = function () {
     $('#buttonUpdateCss').on('click', function () {
         var codeCss = $('#textareaCss').val();
         loadResult(codeHtml, codeCss);
+    });
+
+    $('#loginButton').on('click', function() {
+        login();
+    });
+
+    $('#createUser').on('click', function () {
+        createUser();
     });
 }
