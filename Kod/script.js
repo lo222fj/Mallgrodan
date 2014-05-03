@@ -94,7 +94,14 @@ window.onload = function () {
         login();
     });
 
+    $('#logoutButton').on('click', function() {
+        logout(); 
+    });
+
     $('#createUser').on('click', function () {
         createUser();
     });
+    $('#save').on('click', function () {
+        save();
+    })
 }
