@@ -24,6 +24,8 @@ var auth = new FirebaseSimpleLogin(firebase, function (error, user) {
         console.log('I auth: User Id: ' + user.uid + ', Provider: ' + user.provider);
 
     } else {
+        loggedInUserEmail = '';
+        messages('Du är inte inloggad', 'correctMessage');
         console.log('Nope, no logged in user.');
     }
     console.log(loggedInUserEmail + ' sist i var aut');
@@ -43,15 +45,10 @@ function createUser() {
             var userRef = firebase.child(('user/' + userEmail.toString()).replace('.', ' '));
             userRef.set('mitt användarnamn är ' + userId);
 
-            console.log(userRef);
-            console.log(userEmail + ' i createUser');
-            console.log(userId + ' i createUser');
-
             console.log('User Id: ' + user.uid + ', Email: ' + user.email);
         }
         else {
            messages('Det gick tyvärr inte att skapa en ny användare!', 'errorMessage');
-
             console.log(error);
         }
         resetFields();
@@ -68,13 +65,13 @@ function login() {
         password: password.value
     });
     console.log(loggedInUserEmail + ' sist i login');
-    console.log(userEmail + 'sist i login');
-    console.log(userId + 'sist i login');
     resetFields();
 }
 
 function logout() {
-    alert('utloggad användare ' );
+    console.log('i logout');
+    auth.logout();
+
 }
 
 function messages(message, messageClass) {
