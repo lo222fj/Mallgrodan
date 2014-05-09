@@ -20,7 +20,7 @@ var auth = new FirebaseSimpleLogin(firebase, function (error, user) {
         console.log(error);
     } else if (user) {
         loggedInUserEmail = user.email;
-        messages('Du är inloggad som '+ user.email, 'correctMessage');
+        messages('Du är inloggad som ' + user.email, 'correctMessage');
         console.log('I auth: User Id: ' + user.uid + ', Provider: ' + user.provider);
 
     } else {
@@ -48,7 +48,7 @@ function createUser() {
             console.log('User Id: ' + user.uid + ', Email: ' + user.email);
         }
         else {
-           messages('Det gick tyvärr inte att skapa en ny användare!', 'errorMessage');
+            messages('Det gick tyvärr inte att skapa en ny användare!', 'errorMessage');
             console.log(error);
         }
         resetFields();
@@ -59,7 +59,7 @@ function createUser() {
 
 function login() {
     console.log('i login()')
-    
+
     auth.login("password", {
         email: email.value,
         password: password.value
@@ -71,10 +71,12 @@ function login() {
 function logout() {
     console.log('i logout');
     auth.logout();
-
 }
 
 function messages(message, messageClass) {
+    var existingClass = loginMessage.attr('class');
+    loginMessage.removeClass(existingClass);
+
     loginMessage.addClass(messageClass);
     loginMessage.text(message);
 }
@@ -83,6 +85,52 @@ function resetFields() {
     $('#password').val('');
 }
 
-function save() {
-    alert("Spara");
+function saveCssTemplateToFirebase() {
+    console.log(loggedInUserEmail);
+    if (loggedInUserEmail != '') {
+        var currentUser = firebase.child(('user/' + loggedInUserEmail.toString()).replace('.', ' '));
+        var css = $('#textareaCss').val();
+        var name = $('#nameTemplate').val();
+
+        currentUser.child(name).set(css);
+        
+        messages('Mallen '+ name + ' har sparats', 'errorMessage');
+    }
+    else {
+        messages('Du måste vara inloggad för att kunna spara', 'errorMessage');
+    }
+    $('#nameTemplate').val('');
 }
+
+function loadCssTemplateFromFirebase() {
+    var currentUser = firebase.child(('user/' + loggedInUserEmail.toString()).replace('.', ' '));
+    console.log(currentUser);
+    var name = $('#templateToLoad').val();
+
+    currentUser.child(name).once('value', function (dataSnapshot) {
+       
+        var css = dataSnapshot.val();
+        //console.log(css);
+        $('#html').text('');
+        $('#textareaCss').val(css);
+        $('#templateToLoad').val('');
+
+
+        var codeHtml = loadHtmlDoc();
+        loadResult(codeHtml, css);
+    })
+}
+
+function viewSavedTemplates() {
+    var currentUser = firebase.child(('user/' + loggedInUserEmail.toString()).replace('.', ' '));
+
+    currentUser.once('value', function (childSnapshot) {
+        var templates = childSnapshot.val();
+        var savedTemplates = $('#savedTemplates');
+        for (var template in templates) {
+            savedTemplates.append($('<li>' + template + '</li>'));
+            console.log(template)
+        }
+    })
+}
+

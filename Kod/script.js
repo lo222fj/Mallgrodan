@@ -42,6 +42,7 @@ function loadHtmlDoc() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             codeHtml = xmlhttp.responseText;
             loadHtml(codeHtml);
+            
         }
     }
     //Sista parametern i .open är ändrad från true (asynkron hämtning) till false för att resultatet
@@ -66,15 +67,15 @@ function loadCssDoc() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             codeCss = xmlhttp.responseText;
             loadCss(codeCss);
-            console.log("laddat css");
+            //console.log("laddat css");
         }
     }
     //Sista parametern i .open är ändrad från true (asynkron hämtning) till false för att resultatet
     //ska ha kommit innan funktionen returnerar. Bör ses över. Kan ställa till problem
     xmlhttp.open("GET", "StyleDefault.css", false);
-    console.log("före sänd");
+    //console.log("före sänd");
     xmlhttp.send();
-    console.log("Efter sänd");
+    //console.log("Efter sänd");
 
     return codeCss;
 }
@@ -101,7 +102,14 @@ window.onload = function () {
     $('#createUser').on('click', function () {
         createUser();
     });
-    $('#save').on('click', function () {
-        save();
+    $('#saveTemplate').on('click', function () {
+        saveCssTemplateToFirebase();
+    })
+    $('#loadTemplate').on('click', function () {
+        loadCssTemplateFromFirebase();
+    })
+    $('#viewTemplates').on('click', function () {
+        viewSavedTemplates();
+        alert('Visa');
     })
 }
