@@ -98,34 +98,38 @@ function loadCssTemplateFromFirebase() {
  var currentUser = firebase.child(('user/' + loggedInUserEmail.toString()).replace('.', ' '));
  console.log(currentUser);
  var name = $('#templateToAdministrate').val();
+ var exists;
 
  if (name == '') {
   messages('Du måste ange namnet på mallen du vill öppna', 'errorMessage');
   return;
  }
+ currentUser.once('value', function (childSnapshot) {
+  var templates = childSnapshot.val();
+  exists = false;
 
-
- else {
-  currentUser.child(name).once('value', function (dataSnapshot) {
-   var css = dataSnapshot.val();
-   var exists = exist(name, currentUser);
-   console.log(exists + ' i load');
-   if (exists) {
-
-    $('#html').text('');
-    $('#textareaCss').val(css);
-    $('#templateToAdministrate').val('');
-
-    var codeHtml = loadHtmlDoc();
-    loadResult(codeHtml, css);
+  for (var template in templates) {
+   if (template == name) {
+    exists = true;
    }
-   else {
-    messages('Det finns ingen sparad mall med namnet ' + name, 'errorMessage');
-   }
-  }, function (error) {
-   messages('Mallen ' + name + ' kunde inte öppnas', 'errorMessage');
-  });
- }
+  }
+  var css = childSnapshot.child(name).val();
+  console.log(css);
+
+  if (exists) {
+   $('#html').text('');
+   $('#textareaCss').val(css);
+   $('#templateToAdministrate').val('');
+
+   var codeHtml = loadHtmlDoc();
+   loadResult(codeHtml, css);
+  }
+  else {
+   messages('Det finns ingen sparad mall med namnet ' + name, 'errorMessage');
+  }
+ }, function (error) {
+  messages('Mallen ' + name + ' kunde inte öppnas', 'errorMessage');
+ });
 }
 function viewSavedTemplates() {
  emptyLoginMessage();
@@ -177,24 +181,6 @@ function removeTemplate() {
   $('#templateToAdministrate').val('');
  }, 300);
 }
-function exist(name, currentUser) {
- console.log(currentUser + ' i exist');
- currentUser.once('value', function (childSnapshot) {
-
-  var templates = childSnapshot.val();
-
-  var exists = false;
-
-  for (var template in templates) {
-   if (template == name) {
-    exists = true;
-   }
-  }
-  //console.log(exists + ' i exist');
- });
- return exists;
-}
-
 function messages(message, messageClass) {
  var existingClass = loginMessage.attr('class');
  loginMessage.removeClass(existingClass);
