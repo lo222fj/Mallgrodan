@@ -1,13 +1,74 @@
 html {
-	background-color: #E8BE90;
+ background-color: #fff;
+ color: #3d222e;
 }
-section{
-	border: inset #BD9B75 0.2em;
-	margin: 0 2em 2em 0;
+
+.container {
+ /*    width: 95%;*/
+ max-width: 960px;
+ margin: 0 auto;
+ border: dotted 0.2em green;
 }
+header {
+ overflow: auto;
+}
+#loginDiv {
+ float: right;
+}
+section {
+ border: inset #71354e 0.2em;
+ margin: 0 auto;
+ overflow: auto;
+ padding: 0.5em;
+}
+
+#content {
+ border: dashed 0.1em red;
+ overflow: auto;
+}
+
+.subcontainer {
+ width: 47%;
+ max-width: 450px;
+ line-height: 1em;
+}
+
+.subcontainerLeft {
+ float: left;
+ font-size: 80%;
+}
+
+.subcontainerRight {
+ float: right;
+ font-size: 85%;
+}
+
+#textareaCss {
+ width: 100%;
+ font-family: monospace;
+}
+#administrateTemplates {
+ display: none;
+}
+
+#html pre {
+ word-wrap: break-word;
+ font-family: monospace;
+}
+
+#iframeResult {
+ width: 100%;
+ min-height: 30em;
+}
+
 .errorMessage {
-    color: red;
+ color: red;
 }
+
 .correctMessage {
-    color: green;
+ color: green;
+}
+
+footer {
+ clear: both;
 }

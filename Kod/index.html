@@ -2,71 +2,69 @@
 <html lang="sv">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <meta name="description" content="Testa dina webbdesignidéer. Få inspiration av färdiga alternativ och gör egna ändringar" />
-    <meta name="keywords" content="css, designmall, layoutmall, färgtema" />
-    <script>
-        document.createElement("header");
-        document.createElement("hgroup");
-        document.createElement("footer");
-        document.createElement("article");
-        document.createElement("main");
-        document.createElement("section");
-        document.createElement("nav");
-        document.createElement("aside");
-        document.createElement("address");
-    </script>
-    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
-    <title>Mallgrodan</title>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link rel="stylesheet" href="style.css" />
+ <meta name="description" content="Testa dina webbdesignidéer. Få inspiration av färdiga alternativ och gör egna ändringar" />
+ <meta name="keywords" content="css, designmall, layoutmall, färgtema" />
+ <script>
+  document.createElement("header");
+  document.createElement("hgroup");
+  document.createElement("footer");
+  document.createElement("article");
+  document.createElement("main");
+  document.createElement("section");
+  document.createElement("nav");
+  document.createElement("aside");
+  document.createElement("address");
+ </script>
+ <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+ <title>Mallgrodan</title>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Mallgrodan</h1>
-        </header>
-        <main>
-				<section id="result">
-					<iframe id="iframeResult" src="HtmlPage.html"></iframe>
-				</section>
-				<section id="html"></section>
-				<section id="css">
-					<textarea id="textareaCss" name="testareaCss" cols="50" rows="10"></textarea>
-					<button id="buttonUpdateCss" type="button">
-						Uppdatera
-					</button>
-					<div id="loginDiv">
-						<input id="email" placeholder="email"/>
-						<input id="password" type="password" placeholder="Lösenord" />
-						<input id="createUser" type="button" value="Skapa användare" />
-						<input id="loginButton" type="button" value="Logga in" />
-                        <input id="logoutButton" type="button" value="Logga ut" />
-					</div>
-                    <div id="saveDiv">
-                        <input id="saveTemplate" type="button" value="Spara" />
-                        <input id="nameTemplate" placeholder="Döp din mall" /> 
-                    </div>
-                    <div id="loadDiv">
-                        <input id="viewTemplates" type="button" value="Visa mallar" />
-                        <ul id="savedTemplates"></ul>
-                        <input id="loadTemplate" type="button" value="Öppna" />
-                        <input id="templateToLoad" placeholder="Ange mallens namn" /> 
-                    </div>
-                        <p id="loginMessage"></p>
+ <div class="container">
+  <header>
+   <h1>Mallgrodan</h1>
+   <div id="loginDiv">
+    <input id="email" placeholder="email" />
+    <input id="password" type="password" placeholder="Lösenord" />
+    <input id="loginButton" type="button" value="Logga in" />
+    <input id="logoutButton" type="button" value="Logga ut" />
+    <input id="createUser" type="button" value="Skapa användare" />
+   </div>
+  </header>
+  <div id="content">
+   <section id="result">
+    <iframe id="iframeResult" src="HtmlPage.html"></iframe>
+   </section>
 
-				</section>
-			</main>
-        <footer>
-            <p>
-                Copyright &copy; 2014 Mallgrodan
-            </p>
-        </footer>
+   <section id="css" class="subcontainer subcontainerLeft">
+    <textarea id="textareaCss" name="textareaCss" cols="40" rows="30"></textarea>
+    <button id="buttonUpdateCss" type="button">
+     Uppdatera
+    </button>
+    <div id="administrateTemplates">
+     <input id="viewTemplates" type="button" value="Visa mallar" />
+     <ul id="savedTemplates"></ul>
+     <input id="templateToAdministrate" placeholder="Ange mallens namn" />
+     <input id="saveTemplate" type="button" value="Spara" />
+     <input id="loadTemplate" type="button" value="Öppna" />
+     <input id="remove" type="button" value="Ta bort" />
     </div>
-    <script src="jquery-2.0.3.js"></script>
-    <script src="script.js"></script>
-    <script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.3.2/firebase-simple-login.js'>
-    </script>
-    <script src="login.js"></script>
+    <p id="loginMessage"></p>
+   </section>
+   <section id="html" class="subcontainer subcontainerRight"></section>
+  </div>
+  <footer>
+   <p>
+    Copyright &copy; 2014 Mallgrodan
+   </p>
+  </footer>
+ </div>
+ <script src="jquery-2.0.3.js"></script>
+ <script src="script.js"></script>
+ <script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.3.2/firebase-simple-login.js'>
+ </script>
+ <script src="login.js"></script>
 </body>
 </html>

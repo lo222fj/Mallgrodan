@@ -9,7 +9,7 @@ function htmlEncode(value) {
 
 function loadHtml(codeHtml) {
 
-    $('#html').append($('<pre></pre>'));
+ $('#html').append($('<pre></pre>'));
     $('#html pre').append(htmlEncode(codeHtml));
 }
 
@@ -110,6 +110,8 @@ window.onload = function () {
     })
     $('#viewTemplates').on('click', function () {
         viewSavedTemplates();
-        alert('Visa');
+    })
+    $('#remove').on('click', function() {
+        removeTemplate();
     })
 }
