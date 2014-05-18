@@ -31,6 +31,7 @@ section {
  width: 47%;
  max-width: 450px;
  line-height: 1em;
+ margin-top: 1em;
 }
 
 .subcontainerLeft {
@@ -50,15 +51,21 @@ section {
 #administrateTemplates {
  display: none;
 }
-
+#html {
+ max-height: 30em;
+ overflow: auto;
+}
 #html pre {
  word-wrap: break-word;
  font-family: monospace;
 }
-
+#result {
+ background-color: #dfcaf6;
+}
 #iframeResult {
- width: 100%;
+ width: 78%;
  min-height: 30em;
+ float: left;
 }
 
 .errorMessage {

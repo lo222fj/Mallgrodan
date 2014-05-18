@@ -71,7 +71,7 @@ function login() {
 function logout() {
  console.log('i logout');
  auth.logout();
- $('#administrateTemplates').css('display', 'block');
+ $('#administrateTemplates').css('display', 'none');
 }
 
 function saveCssTemplateToFirebase() {

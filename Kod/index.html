@@ -35,11 +35,26 @@
   </header>
   <div id="content">
    <section id="result">
+
     <iframe id="iframeResult" src="HtmlPage.html"></iframe>
+    <div id="colorChoise">
+     <p>Välj färgtema</p>
+     <select name="colorTheme">
+      <option value="1">Ocean Deap</option>
+      <option value="2">Golden light</option>
+     </select>
+    </div>
+    <div id="layoutChoise">
+     <p>Välj layout</p>
+     <select name="layoutTheme">
+      <option value="1">Chaos</option>
+      <option value="2">Early spring</option>
+     </select>
+    </div>
    </section>
 
    <section id="css" class="subcontainer subcontainerLeft">
-    <textarea id="textareaCss" name="textareaCss" cols="40" rows="30"></textarea>
+    <textarea id="textareaCss" name="textareaCss" cols="40" rows="20"></textarea>
     <button id="buttonUpdateCss" type="button">
      Uppdatera
     </button>
@@ -53,7 +68,8 @@
     </div>
     <p id="loginMessage"></p>
    </section>
-   <section id="html" class="subcontainer subcontainerRight"></section>
+   <section id="html" class="subcontainer subcontainerRight">
+   </section>
   </div>
   <footer>
    <p>
