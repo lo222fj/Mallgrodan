@@ -1,9 +1,9 @@
 ﻿var firebase = new Firebase('https://blinding-fire-8523.firebaseio.com/');
 var loginMessage = $('#loginMessage');
-//var userId;
-//var userEmail;
-//var userRef;
 var loggedInUserEmail;
+var templateMessage = $('#templateMessage');
+var loginDiv = $('#loginDiv');
+var loginLinks = $('#loginLinks');
 
 //koppling till login-systemet
 //efter rad 9 är auth ett FirebaseSimpleLogin-objekt
@@ -12,20 +12,32 @@ var auth = new FirebaseSimpleLogin(firebase, function (error, user) {
 
  if (error) {
   switch (error.code) {
-   case 'INVALID_EMAIL': messages("Felaktig mailadress", "errorMessage")
-   case 'EMAIL_TAKEN': messages("Angiven mailadress är upptagen", "errorMessage")
-   case 'INVALID_USER': messages("Användaren finns inte hos Mallgrodan", "errorMessage")
-   case 'INVALID_PASSWORD': messages("Lösenordet stämmer inte med användaren", "errorMessage")
+   case 'INVALID_EMAIL': messages(loginMessage, "Felaktig mailadress", "errorMessage")
+   case 'EMAIL_TAKEN': messages(loginMessage, "Angiven mailadress är upptagen", "errorMessage")
+   case 'INVALID_USER': messages(loginMessage, "Användaren finns inte hos Mallgrodan", "errorMessage")
+   case 'INVALID_PASSWORD': messages(loginMessage, "Lösenordet stämmer inte med användaren", "errorMessage")
   }
   console.log(error);
  } else if (user) {
   loggedInUserEmail = user.email;
-  messages('Du är inloggad som ' + user.email, 'correctMessage');
+  messages(loginMessage, 'Du är inloggad som ' + user.email, 'correctMessage');
   console.log('I auth: User Id: ' + user.uid + ', Provider: ' + user.provider);
   $('#administrateTemplates').css('display', 'block');
- } else {
+
+  //Knappar
+  $('#loginMessage').before($('<input id="logoutButton" type="button" value="Logga ut" />'));
+  $('#logoutButton').on('click', function () {
+   logout();
+  });
+  $('#loginButton').remove();
+  //$('#password').remove();
+  //$('#email').remove();
+
+ }
+ else {
   loggedInUserEmail = '';
-  messages('Du är inte inloggad', 'correctMessage');
+  messages(loginMessage, 'Du är inte inloggad', 'correctMessage');
+
   console.log('Nope, no logged in user.');
  }
  console.log(loggedInUserEmail + ' sist i var aut');
@@ -38,7 +50,7 @@ function createUser() {
  auth.createUser(email.value, password.value, function (error, user) {
   console.log('user = ' + user);
   if (!error) {
-   messages('Välkommen som användare på Mallgrodan!', 'correctMessage');
+   messages(loginMessage, 'Välkommen som användare på Mallgrodan!', 'correctMessage');
 
    var userId = user.uid;
    var userEmail = user.email;
@@ -46,15 +58,37 @@ function createUser() {
    userRef.set('mitt användarnamn är ' + userId);
 
    console.log('User Id: ' + user.uid + ', Email: ' + user.email);
+
+   //$('#createUser').remove();
+   //$('#password').remove();
+   //$('#email').remove();
+
   }
   else {
-   messages('Det gick tyvärr inte att skapa en ny användare!', 'errorMessage');
+   messages(loginMessage, 'Det gick tyvärr inte att skapa en ny användare!', 'errorMessage');
    console.log(error);
   }
   resetFields();
  });
- console.log(userEmail + 'sist i createUser');
+
  //console.log(userId + 'sist i createUser');
+}
+
+function prepareLogin() {
+ loginDiv.prepend($('<input id="createUser" type="button" value="Skapa användare" />'));
+ $('#createUser').on('click', function () {
+  createUser();
+ });
+ //lägger in fält och kopplar klickfunktion
+ loginDiv.prepend($('<input id="loginButton" type="button" value="Logga in" />'));
+ $('#loginButton').on('click', function () {
+  login();
+ });
+
+ loginDiv.prepend($('<input id="password" type="password" placeholder="Lösenord" />'));
+ loginDiv.prepend($('<input id="email" placeholder="email" />'));
+
+ //$('#password').css('display', 'block');
 }
 
 function login() {
@@ -64,6 +98,16 @@ function login() {
   email: email.value,
   password: password.value
  });
+
+ ////Knappar
+ //loginDiv.prepend($('<input id="logoutButton" type="button" value="Logga ut" />'));
+ //$('#logoutButton').on('click', function() {
+ //     logout(); 
+ // });
+ //$('#loginButton').remove();
+ //$('#password').remove();
+ //$('#email').remove();
+
  console.log(loggedInUserEmail + ' sist i login');
  resetFields();
 }
@@ -72,6 +116,15 @@ function logout() {
  console.log('i logout');
  auth.logout();
  $('#administrateTemplates').css('display', 'none');
+
+ $('#logoutButton').remove();
+ $('#loginMessage').before($('<input id="loginButton" type="button" value="Logga in" />'));
+ $('#loginButton').on('click', function () {
+  login();
+ });
+
+ //$('#loginLinks').append($('<a id="loginLink" href="#">Logga in</a>'));
+ //$('#loginLinks').append($('<a id="newUserLink" href="#">Ny användare</a>'));
 }
 
 function saveCssTemplateToFirebase() {
@@ -85,10 +138,10 @@ function saveCssTemplateToFirebase() {
 
   currentUser.child(name).set(css);
 
-  messages('Mallen ' + name + ' har sparats', 'correctMessage');
+  messages(templateMessage, 'Mallen ' + name + ' har sparats', 'correctMessage');
  }
  else {
-  messages('Du måste döpa mallen för att kunna spara', 'errorMessage');
+  messages(templateMessage, 'Du måste döpa mallen för att kunna spara', 'errorMessage');
  }
  $('#templateToAdministrate').val('');
 }
@@ -101,7 +154,7 @@ function loadCssTemplateFromFirebase() {
  var exists;
 
  if (name == '') {
-  messages('Du måste ange namnet på mallen du vill öppna', 'errorMessage');
+  messages(templateMessage, 'Du måste ange namnet på mallen du vill öppna', 'errorMessage');
   return;
  }
  currentUser.once('value', function (childSnapshot) {
@@ -123,16 +176,17 @@ function loadCssTemplateFromFirebase() {
 
    var codeHtml = loadHtmlDoc();
    loadResult(codeHtml, css);
+   emptyTemplateMessage();
   }
   else {
-   messages('Det finns ingen sparad mall med namnet ' + name, 'errorMessage');
+   messages(templateMessage, 'Det finns ingen sparad mall med namnet ' + name, 'errorMessage');
   }
  }, function (error) {
-  messages('Mallen ' + name + ' kunde inte öppnas', 'errorMessage');
+  messages(templateMessage, 'Mallen ' + name + ' kunde inte öppnas', 'errorMessage');
  });
 }
 function viewSavedTemplates() {
- emptyLoginMessage();
+ emptyTemplateMessage();
  var savedTemplates = $('#savedTemplates');
  savedTemplates.empty();
 
@@ -164,16 +218,16 @@ function removeTemplate() {
   if (exists) {
    var onComplete = function (error) {
     if (error) {
-     messages('Mallen ' + name + ' kunde inte tas bort', 'errorMessage');
+     messages(templateMessage, 'Mallen ' + name + ' kunde inte tas bort', 'errorMessage');
     }
     else {
-     messages('Mallen ' + name + ' har tagits bort', 'correctMessage');
+     messages(templateMessage, 'Mallen ' + name + ' har tagits bort', 'correctMessage');
     }
    }
    currentUser.child(name).remove(onComplete);
   }
   else {
-   messages('Det finns ingen sparad mall med namnet ' + name, 'errorMessage');
+   messages(templateMessage, 'Det finns ingen sparad mall med namnet ' + name, 'errorMessage');
   }
  });
  //Timer för att meddelandet ska hinna hämta namnet på mallen innan den raderas
@@ -181,15 +235,15 @@ function removeTemplate() {
   $('#templateToAdministrate').val('');
  }, 300);
 }
-function messages(message, messageClass) {
- var existingClass = loginMessage.attr('class');
- loginMessage.removeClass(existingClass);
+function messages(messageType, message, messageClass) {
+ var existingClass = messageType.attr('class');
+ messageType.removeClass(existingClass);
 
- loginMessage.addClass(messageClass);
- loginMessage.text(message);
+ messageType.addClass(messageClass);
+ messageType.text(message);
 }
-function emptyLoginMessage() {
- $('#loginMessage').val('');
+function emptyTemplateMessage() {
+ templateMessage.text('');
 }
 
 function resetFields() {

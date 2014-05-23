@@ -25,12 +25,9 @@
  <div class="container">
   <header>
    <h1>Mallgrodan</h1>
+   
    <div id="loginDiv">
-    <input id="email" placeholder="email" />
-    <input id="password" type="password" placeholder="Lösenord" />
-    <input id="loginButton" type="button" value="Logga in" />
-    <input id="logoutButton" type="button" value="Logga ut" />
-    <input id="createUser" type="button" value="Skapa användare" />
+    <p id="loginMessage"></p>
    </div>
   </header>
   <div id="content">
@@ -50,23 +47,24 @@
       <option value="1">Chaos</option>
       <option value="2">Early spring</option>
      </select>
+     <button id="buttonUpdateCss" type="button">
+      Uppdatera
+     </button>
+     <div id="administrateTemplates">
+      <input id="viewTemplates" type="button" value="Visa mallar" />
+      <ul id="savedTemplates"></ul>
+      <input id="templateToAdministrate" placeholder="Ange mallens namn" />
+      <input id="saveTemplate" type="button" value="Spara" />
+      <input id="loadTemplate" type="button" value="Öppna" />
+      <input id="remove" type="button" value="Ta bort" />
+     </div>
+     <p id="templateMessage"></p>
     </div>
    </section>
 
    <section id="css" class="subcontainer subcontainerLeft">
     <textarea id="textareaCss" name="textareaCss" cols="40" rows="20"></textarea>
-    <button id="buttonUpdateCss" type="button">
-     Uppdatera
-    </button>
-    <div id="administrateTemplates">
-     <input id="viewTemplates" type="button" value="Visa mallar" />
-     <ul id="savedTemplates"></ul>
-     <input id="templateToAdministrate" placeholder="Ange mallens namn" />
-     <input id="saveTemplate" type="button" value="Spara" />
-     <input id="loadTemplate" type="button" value="Öppna" />
-     <input id="remove" type="button" value="Ta bort" />
-    </div>
-    <p id="loginMessage"></p>
+
    </section>
    <section id="html" class="subcontainer subcontainerRight">
    </section>

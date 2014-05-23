@@ -12,8 +12,20 @@ html {
 header {
  overflow: auto;
 }
+h1 {
+ width: 70%;
+ float: left;
+}
 #loginDiv {
  float: right;
+ width: 250px;
+}
+#loginDiv input {
+ font-size: 0.6em;
+ margin-right: 0.3em;
+}
+#loginDiv p {
+ margin: 0.3em 0 0.3em 0;
 }
 section {
  border: inset #71354e 0.2em;
@@ -48,7 +60,7 @@ section {
  width: 100%;
  font-family: monospace;
 }
-#administrateTemplates {
+#administrateTemplates{
  display: none;
 }
 #html {

@@ -86,22 +86,31 @@ window.onload = function () {
     var codeCss = loadCssDoc();
     loadResult(codeHtml, codeCss);
 
+    //$(loginLink).on('click', function () {
+    // toLogin();
+    //});
+
+    //$(newUserLink).on('click', function () {
+    // toCreateUser();
+    //});
+
     $('#buttonUpdateCss').on('click', function () {
         var codeCss = $('#textareaCss').val();
         loadResult(codeHtml, codeCss);
     });
+  
+    prepareLogin();
+    //$('#loginButton').on('click', function() {
+    //    login();
+    //});
 
-    $('#loginButton').on('click', function() {
-        login();
-    });
+    //$('#logoutButton').on('click', function() {
+    //    logout(); 
+    //});
 
-    $('#logoutButton').on('click', function() {
-        logout(); 
-    });
-
-    $('#createUser').on('click', function () {
-        createUser();
-    });
+    //$('#createUser').on('click', function () {
+    //    createUser();
+    //});
     $('#saveTemplate').on('click', function () {
         saveCssTemplateToFirebase();
     })
