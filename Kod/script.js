@@ -52,47 +52,114 @@ function loadHtmlDoc() {
 
     return codeHtml;
 }
-//Läser in defaultmallen för css
-function loadCssDoc() {
-    var xmlhttp;
 
-    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-    } else {// code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
+//BORTKOMMATERAR FUNGERANDE KOD OCH SKRIVER NY FÖR TEST AV ATT LÄGGA IHOP TVÅ CSS-DOKUMENT
+//Läser in defaultmallen för css 
+//function loadCssDoc() {
+//    var xmlhttp;
 
-    var codeCss;
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            codeCss = xmlhttp.responseText;
-            loadCss(codeCss);
-            //console.log("laddat css");
-        }
-    }
-    //Sista parametern i .open är ändrad från true (asynkron hämtning) till false för att resultatet
-    //ska ha kommit innan funktionen returnerar. Bör ses över. Kan ställa till problem
-    xmlhttp.open("GET", "StyleDefault.css", false);
-    //console.log("före sänd");
-    xmlhttp.send();
-    //console.log("Efter sänd");
+//    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+//        xmlhttp = new XMLHttpRequest();
+//    } else {// code for IE6, IE5
+//        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+//    }
 
-    return codeCss;
+//    var codeCss;
+//    xmlhttp.onreadystatechange = function () {
+//        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+//            codeCss = xmlhttp.responseText;
+//            loadCss(codeCss);
+//            //console.log("laddat css");
+//        }
+//    }
+//    //Sista parametern i .open är ändrad från true (asynkron hämtning) till false för att resultatet
+//    //ska ha kommit innan funktionen returnerar. Bör ses över. Kan ställa till problem
+//    xmlhttp.open("GET", "StyleDefault.css", false);
+//    //console.log("före sänd");
+//    xmlhttp.send();
+//    //console.log("Efter sänd");
+
+//    return codeCss;
+//}
+
+
+
+ 
+ 
+function getCssLayout() {
+     var xmlhttp;
+
+     if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+         xmlhttp = new XMLHttpRequest();
+     } else {// code for IE6, IE5
+         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+     }
+
+     var codeLayout;
+     xmlhttp.onreadystatechange = function () {
+         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+             codeLayout = xmlhttp.responseText;
+             //loadCss(codeLayout); flyttad till onload för att slå ihop båda
+             //console.log("laddat css");
+         }
+     }
+     //Sista parametern i .open är ändrad från true (asynkron hämtning) till false för att resultatet
+     //ska ha kommit innan funktionen returnerar. Bör ses över. Kan ställa till problem
+     xmlhttp.open("GET", "StyleDefault.css", false);
+     //console.log("före sänd");
+     xmlhttp.send();
+     //console.log("Efter sänd");
+
+     return codeLayout;
+ }
+
+function getCssColor() {
+ 
+ var xmlhttp;
+
+ if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp = new XMLHttpRequest();
+ } else {// code for IE6, IE5
+  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+ }
+
+ var codeColor;
+ xmlhttp.onreadystatechange = function () {
+  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+   codeColor = xmlhttp.responseText;
+   //loadCss(codeColor); flyttad till onload för att slå ihop båda
+   //console.log("laddat css");
+  }
+ }
+ //Sista parametern i .open är ändrad från true (asynkron hämtning) till false för att resultatet
+ //ska ha kommit innan funktionen returnerar. Bör ses över. Kan ställa till problem
+ xmlhttp.open("GET", "StyleSheetDefaultColor.css", false);
+ //console.log("före sänd");
+ xmlhttp.send();
+ //console.log("Efter sänd");
+
+ return codeColor;
 }
+
+
 
 window.onload = function () {
 
-    var codeHtml = loadHtmlDoc();
-    var codeCss = loadCssDoc();
+ //Bortkommenteras när jag testar nytt. Kan ta tillbaka som det är
+ //var codeHtml = loadHtmlDoc();
+ //   var codeCss = loadCssDoc();
+ //   console.log(codeCss);
+ //   loadResult(codeHtml, codeCss);
+
+ var codeHtml = loadHtmlDoc();
+ var codeLayout = getCssLayout();
+ console.log(codeLayout);
+ var codeColor = getCssColor();
+ console.log(codeColor);
+ var codeCss = codeColor + codeLayout;
+ loadCss(codeCss);
+     console.log(codeCss);
     loadResult(codeHtml, codeCss);
-
-    //$(loginLink).on('click', function () {
-    // toLogin();
-    //});
-
-    //$(newUserLink).on('click', function () {
-    // toCreateUser();
-    //});
 
     $('#buttonUpdateCss').on('click', function () {
         var codeCss = $('#textareaCss').val();
@@ -100,17 +167,7 @@ window.onload = function () {
     });
   
     prepareLogin();
-    //$('#loginButton').on('click', function() {
-    //    login();
-    //});
 
-    //$('#logoutButton').on('click', function() {
-    //    logout(); 
-    //});
-
-    //$('#createUser').on('click', function () {
-    //    createUser();
-    //});
     $('#saveTemplate').on('click', function () {
         saveCssTemplateToFirebase();
     })
@@ -123,4 +180,15 @@ window.onload = function () {
     $('#remove').on('click', function() {
         removeTemplate();
     })
+ //$('#loginButton').on('click', function() {
+ //    login();
+ //});
+
+ //$('#logoutButton').on('click', function() {
+ //    logout(); 
+ //});
+
+ //$('#createUser').on('click', function () {
+ //    createUser();
+ //});
 }

@@ -59,6 +59,7 @@ section {
 #textareaCss {
  width: 100%;
  font-family: monospace;
+ height: 100%;
 }
 #administrateTemplates{
  display: none;
