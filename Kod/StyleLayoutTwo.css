@@ -1,0 +1,32 @@
+﻿/*body {
+ background-color: #fff;
+ color: #3d222e;
+}*/
+#content {
+ overflow: auto;
+}
+nav, ul, li {
+ margin: 0;
+ padding: 0;
+}
+li {
+ display: inline-block;
+}
+a {
+ display: block;
+ padding: 0.5em 0.5em 0 0;
+ text-decoration: none;
+}
+article {
+ float: left;
+ padding-right: 0.5em;
+}
+#artOne {
+ width: 64.6%;
+}
+#artTwo {
+ width: 31.3%;
+}
+#artThree, #artFour, #artFive, #artSix {
+ width: 23%;
+}

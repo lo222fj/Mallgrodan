@@ -81,12 +81,8 @@ function loadHtmlDoc() {
 
 //    return codeCss;
 //}
-
-
-
  
- 
-function getCssLayout() {
+function getCssLayout(StylesheetFile) {
      var xmlhttp;
 
      if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -105,7 +101,8 @@ function getCssLayout() {
      }
      //Sista parametern i .open är ändrad från true (asynkron hämtning) till false för att resultatet
      //ska ha kommit innan funktionen returnerar. Bör ses över. Kan ställa till problem
-     xmlhttp.open("GET", "StyleDefault.css", false);
+     xmlhttp.open("GET", StylesheetFile, false);
+     //xmlhttp.open("GET", "StyleLayoutSimple.css", false);
      //console.log("före sänd");
      xmlhttp.send();
      //console.log("Efter sänd");
@@ -133,15 +130,13 @@ function getCssColor() {
  }
  //Sista parametern i .open är ändrad från true (asynkron hämtning) till false för att resultatet
  //ska ha kommit innan funktionen returnerar. Bör ses över. Kan ställa till problem
- xmlhttp.open("GET", "StyleSheetDefaultColor.css", false);
+ xmlhttp.open("GET", "StyleDefaultColor.css", false);
  //console.log("före sänd");
  xmlhttp.send();
  //console.log("Efter sänd");
 
  return codeColor;
 }
-
-
 
 window.onload = function () {
 
@@ -152,7 +147,7 @@ window.onload = function () {
  //   loadResult(codeHtml, codeCss);
 
  var codeHtml = loadHtmlDoc();
- var codeLayout = getCssLayout();
+ var codeLayout = getCssLayout("StyleLayoutTwo.css");
  console.log(codeLayout);
  var codeColor = getCssColor();
  console.log(codeColor);
@@ -169,17 +164,17 @@ window.onload = function () {
     prepareLogin();
 
     $('#saveTemplate').on('click', function () {
-        saveCssTemplateToFirebase();
-    })
+     saveCssTemplateToFirebase();
+    });
     $('#loadTemplate').on('click', function () {
-        loadCssTemplateFromFirebase();
-    })
+     loadCssTemplateFromFirebase();
+    });
     $('#viewTemplates').on('click', function () {
-        viewSavedTemplates();
-    })
-    $('#remove').on('click', function() {
-        removeTemplate();
-    })
+     viewSavedTemplates();
+    });
+    $('#remove').on('click', function () {
+     removeTemplate();
+    });
  //$('#loginButton').on('click', function() {
  //    login();
  //});
