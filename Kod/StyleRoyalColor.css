@@ -1,0 +1,14 @@
+﻿html {
+  background-color: #0D1B5A;
+}
+header, nav, a {
+ background-color: #F2C342;
+ color: #0D1B5A;
+}
+#content {
+ background-color: #F1D382;
+ color: #0D1B5A;
+}
+footer{
+ color: #F1D382;
+}

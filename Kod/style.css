@@ -13,7 +13,7 @@ header {
  overflow: auto;
 }
 h1 {
- width: 70%;
+ width: 30%;
  float: left;
 }
 #loginDiv {
@@ -73,10 +73,10 @@ section {
  font-family: monospace;
 }
 #result {
- background-color: #dfcaf6;
+ /*background-color: #dfcaf6;*/
 }
 #iframeResult {
- width: 78%;
+ width: 80%;
  min-height: 30em;
  float: left;
 }

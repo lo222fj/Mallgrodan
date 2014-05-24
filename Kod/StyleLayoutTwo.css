@@ -1,9 +1,9 @@
-﻿/*body {
- background-color: #fff;
- color: #3d222e;
-}*/
-#content {
- overflow: auto;
+﻿html {
+   padding: 0.5em;
+}
+
+h1 {
+ margin: 0;
 }
 nav, ul, li {
  margin: 0;
@@ -17,9 +17,17 @@ a {
  padding: 0.5em 0.5em 0 0;
  text-decoration: none;
 }
+#content, header, nav {
+ padding-left: 0.5em;
+}
 article {
- float: left;
+ /*float: left;*/
  padding-right: 0.5em;
+ display: inline-block;
+ vertical-align:top;
+}
+#artSix {
+padding-right: 0;
 }
 #artOne {
  width: 64.6%;
@@ -30,3 +38,6 @@ article {
 #artThree, #artFour, #artFive, #artSix {
  width: 23%;
 }
+footer p{
+ text-align: center;
+ }
