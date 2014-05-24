@@ -36,16 +36,16 @@
     <iframe id="iframeResult" src="HtmlPage.html"></iframe>
     <div id="colorChoise">
      <p>Välj färgtema</p>
-     <select name="colorTheme">
-      <option value="1">Ocean Deap</option>
+     <select id="colorThemes" name="colorTheme">
+      <option value="StyleBlackWhiteColor.css">Black & white</option>
       <option value="2">Golden light</option>
      </select>
     </div>
     <div id="layoutChoise">
      <p>Välj layout</p>
-     <select name="layoutTheme">
-      <option value="1">Chaos</option>
-      <option value="2">Early spring</option>
+     <select id="layoutThemes" name="layoutTheme">
+      <option value="StyleLayoutSimple.css">Simple</option>
+      <option value="StyleLayoutTwo.css">Layout 2</option>
      </select>
      <button id="buttonUpdateCss" type="button">
       Uppdatera
@@ -63,7 +63,7 @@
    </section>
    <div id="subcontainers">
     <section id="css" class="subcontainer subcontainerLeft">
-     <textarea id="textareaCss" name="textareaCss"></textarea>
+     <textarea id="textareaCss" name="textareaCss" rows="20"></textarea>
 
     </section>
     <section id="html" class="subcontainer subcontainerRight">
