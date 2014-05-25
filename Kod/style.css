@@ -64,21 +64,19 @@ section {
 #administrateTemplates{
  display: none;
 }
-#html {
- max-height: 30em;
+#textareaHtml {
+ width: 100%;
  overflow: auto;
 }
 #html pre {
  word-wrap: break-word;
  font-family: monospace;
 }
-#result {
- /*background-color: #dfcaf6;*/
-}
 #iframeResult {
  width: 80%;
- min-height: 30em;
+ min-height: 18em;
  float: left;
+ margin-bottom: 0;
 }
 
 .errorMessage {

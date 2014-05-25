@@ -1,22 +1,46 @@
-﻿#content {
+﻿html {
+   padding: 0.5em;
+}
+#content {
  overflow: auto;
+}
+h1 {
+ margin: 0;
+ padding-bottom: 0.5em;
 }
 nav, ul, li {
  margin: 0;
- padding: 0;
+ padding: 0.2em;
 }
 li {
  display: inline-block;
+ border-right: groove 0.1em;
+ border-bottom-width: 0.2em;
 }
+ li:first-child {
+  border-left: groove 0.1em;
+ }
 a {
  display: block;
- padding: 0.5em 0.5em 0 0;
+ padding: 0.5em 1em 0 1em;
  text-decoration: none;
+}
+ a:first-child {
+ 
+ }
+#content, header, nav {
+ padding-left: 0.5em;
 }
 article {
  float: left;
- width: 48%;
+ width: 47%;
 }
+ article:first-child {
+  padding-right: 0.5em;
+ }
 #artThree, #artFour, #artFive, #artSix {
  display: none;
 }
+footer p{
+ text-align: center;
+ }

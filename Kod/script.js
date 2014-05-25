@@ -8,8 +8,8 @@ function htmlEncode(value) {
 }
 
 function loadHtml(codeHtml) {
- $('#html').append($('<pre></pre>'));
- $('#html pre').append(htmlEncode(codeHtml));
+ //$('#textareaHtml').append($('<pre></pre>'));
+ $('#textareaHtml').append(htmlEncode(codeHtml));
 }
 
 function loadCss(codeCss) {
@@ -109,7 +109,7 @@ function changeTheme() {
  
  var codeLayout = getCssLayout(layoutStyleFile);
  var codeColor = getCssColor(codeColorFile);
- var codeHtml = $('#html').val();
+ var codeHtml = $('#textareaHtml').val();
 
  var codeCss = codeColor + codeLayout;
  loadCss(codeCss);

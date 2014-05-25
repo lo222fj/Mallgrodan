@@ -1,13 +1,22 @@
-﻿html {
+﻿body {
   background-color: #0D1B5A;
 }
-header, nav, a {
+header {
+ background-image:url("header.png");
+ background-repeat: no-repeat;
+}
+nav {
  background-color: #F2C342;
+ }
+header, nav, a {
  color: #0D1B5A;
 }
 #content {
  background-color: #F1D382;
  color: #0D1B5A;
+}
+nav {
+ border-bottom-color: #F1D382;
 }
 footer{
  color: #F1D382;

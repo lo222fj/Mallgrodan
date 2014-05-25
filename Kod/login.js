@@ -25,7 +25,7 @@ var auth = new FirebaseSimpleLogin(firebase, function (error, user) {
   $('#administrateTemplates').css('display', 'block');
 
   //Knappar
-  $('#loginMessage').before($('<input id="logoutButton" type="button" value="Logga ut" />'));
+  $('#createUser').before($('<input id="logoutButton" type="button" value="Logga ut" />'));
   $('#logoutButton').on('click', function () {
    logout();
   });
@@ -118,7 +118,7 @@ function logout() {
  $('#administrateTemplates').css('display', 'none');
 
  $('#logoutButton').remove();
- $('#loginMessage').before($('<input id="loginButton" type="button" value="Logga in" />'));
+ $('#createUser').before($('<input id="loginButton" type="button" value="Logga in" />'));
  $('#loginButton').on('click', function () {
   login();
  });
