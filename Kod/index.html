@@ -32,39 +32,37 @@
   </header>
   <div id="content">
    <section id="result">
-
     <iframe id="iframeResult" src="HtmlPage.html"></iframe>
-    <div id="colorChoise">
-     <p>Välj färgtema</p>
-     <select id="colorThemes" name="colorTheme">
-      <option value="StyleBlackWhiteColor.css">Black & white</option>
-      <option value="StyleRoyalColor.css">Royal</option>
-     </select>
-    </div>
-    <div id="layoutChoise">
-     <p>Välj layout</p>
-     <select id="layoutThemes" name="layoutTheme">
-      <option value="StyleLayoutSimple.css">Simple</option>
-      <option value="StyleLayoutTwo.css">Layout 2</option>
-     </select>
-     <button id="buttonUpdateCss" type="button">
-      Uppdatera
-     </button>
+    <div id="functions">
+     <div id="layoutChoise">
+      <p>Välj layout</p>
+      <select id="layoutThemes" name="layoutTheme">
+       <option value="StyleLayoutSimple.css">Simple</option>
+       <option value="StyleLayoutTwo.css">Layout 2</option>
+      </select>
+     </div>
+     <div id="colorChoise">
+      <p>Välj färgtema</p>
+      <select id="colorThemes" name="colorTheme">
+       <option value="StyleBlackWhiteColor.css">Black & white</option>
+       <option value="StyleRoyalColor.css">Royal</option>
+      </select>
+     </div>
      <div id="administrateTemplates">
-      <input id="viewTemplates" type="button" value="Visa mallar" />
-      <ul id="savedTemplates"></ul>
       <input id="templateToAdministrate" placeholder="Ange mallens namn" />
       <input id="saveTemplate" type="button" value="Spara" />
       <input id="loadTemplate" type="button" value="Öppna" />
       <input id="remove" type="button" value="Ta bort" />
+      <input id="viewTemplates" type="button" value="Visa mallar" />
+      <ul id="savedTemplates"></ul>
+      <p id="templateMessage"></p>
      </div>
-     <p id="templateMessage"></p>
     </div>
    </section>
    <div id="subcontainers">
     <section id="css" class="subcontainer subcontainerLeft">
      <textarea id="textareaCss" name="textareaCss" rows="20"></textarea>
-
+     <input id="buttonUpdateCss" type="button" value="Uppdatera" />
     </section>
     <section id="html" class="subcontainer subcontainerRight">
      <textarea id="textareaHtml" name="textareaHtml" rows="20" disabled="disabled"></textarea>

@@ -1,20 +1,34 @@
 html {
- background-color: #fff;
- color: #3d222e;
+ background-color: #fffacd;
+ color: #1A4E19;
 }
-
 .container {
- /*    width: 95%;*/
  max-width: 960px;
  margin: 0 auto;
- border: dotted 0.2em green;
+ padding: 0.5em;
+ /*border: dotted 0.2em green;*/
 }
 header {
  overflow: auto;
+ border-top: double 0.2em #1A4E19;
+ border-bottom: double 0.2em #1A4E19;
+ padding: 0.5em 0;
+}
+header, .container, section {
+  background-color: #ffffff;
+}
+input[type="button"] {
+ background-color: #fff;
+ color: #1A4E19;
+}
+input {
+ border-radius: 0.4em;
 }
 h1 {
  width: 30%;
  float: left;
+display: inline-block;
+vertical-align: middle;
 }
 #loginDiv {
  float: right;
@@ -28,17 +42,41 @@ h1 {
  margin: 0.3em 0 0.3em 0;
 }
 section {
- border: inset #71354e 0.2em;
  margin: 0 auto;
  overflow: auto;
- padding: 0.5em;
+ padding: 0.5em 0em 0.2em 0em;
+ height: 100%;
 }
-
+ section input {
+  font-size: 0.8em;
+ }
 #content {
- border: dashed 0.1em red;
+ /*border: dashed 0.1em red;*/
  overflow: auto;
 }
-
+#iframeResult {
+ width: 78%;
+ min-height: 18em;
+ float: left;
+ margin-bottom: 0;
+}
+#functions {
+ width: 20%;
+ float: right;
+}
+#layoutChoise p, #colorChoise p {
+ margin: 0;
+ padding-top: 0.3em;
+}
+#administrateTemplates {
+ margin-top: 1em;
+}
+#templateToAdministrate, #viewTemplates {
+ display: block;
+}
+#subcontainers {
+ overflow: auto;
+}
 .subcontainer {
  width: 47%;
  max-width: 450px;
@@ -48,45 +86,42 @@ section {
 
 .subcontainerLeft {
  float: left;
- font-size: 80%;
 }
 
 .subcontainerRight {
  float: right;
- font-size: 85%;
 }
 
 #textareaCss {
  width: 100%;
  font-family: monospace;
  height: 100%;
-}
-#administrateTemplates{
- display: none;
+  font-size: 85%;
 }
 #textareaHtml {
  width: 100%;
- overflow: auto;
+ font-family: monospace;
+ height: 100%;
+ font-size: 85%;
+}
+#administrateTemplates{
+ display: none;
 }
 #html pre {
  word-wrap: break-word;
  font-family: monospace;
 }
-#iframeResult {
- width: 80%;
- min-height: 18em;
- float: left;
- margin-bottom: 0;
-}
-
 .errorMessage {
- color: red;
+ color: #661818;
 }
-
 .correctMessage {
- color: green;
+ color: #1A4E19;
 }
-
 footer {
+ text-align: center;
  clear: both;
+ padding: 1em 0; 
 }
+ footer p {
+  margin: 0;
+ }

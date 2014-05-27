@@ -3,23 +3,22 @@
 html, h1 {
  padding: 0.5em;
 }
-
 body {
  font-family: "Arapey", serif;
 }
-
 h1 {
  margin: 0;
  text-align: center;
  font-size: 2em;
- 
 }
 h1, a {
  font-family: "Julius Sans One", sans-serif;
  font-weight: normal;
  text-transform: uppercase;
 }
-
+h2 {
+ margin: 0.4em 0;
+}
 nav, ul, li {
  margin: 0;
  padding: 0;
