@@ -9,7 +9,7 @@ body {
 h1 {
  margin: 0;
  text-align: center;
- font-size: 2em;
+ font-size: 1.5em;
 }
 h1, a {
  font-family: "Julius Sans One", sans-serif;
@@ -32,7 +32,7 @@ li {
 
 a {
  display: block;
- padding: 0.7em 1.2em 0.7em 1.2em;
+ padding: 0.5em 1.2em 0.5em 1.2em;
  text-decoration: none;
 }
 
@@ -46,7 +46,9 @@ article {
  display: inline-block;
  vertical-align: top;
 }
-
+ article p {
+ margin: 0.5em 0;
+ }
 #artSix {
  padding-right: 0;
 }

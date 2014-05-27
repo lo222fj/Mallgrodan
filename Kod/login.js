@@ -190,6 +190,16 @@ function viewSavedTemplates() {
  var savedTemplates = $('#savedTemplates');
  savedTemplates.empty();
 
+ //Knappar
+ var hideTemplates=$('<input id="hideTemplates" type="button" value="Dölj mallar" />');
+ $('#viewTemplates').before(hideTemplates);
+ $('#hideTemplates').on('click', function () {
+  savedTemplates.empty();
+  hideTemplates.remove();
+  $('#viewTemplates').css('display', 'block');
+ });
+ $('#viewTemplates').css('display', 'none');
+
  var currentUser = firebase.child(('user/' + loggedInUserEmail.toString()).replace('.', ' '));
 
  currentUser.once('value', function (childSnapshot) {

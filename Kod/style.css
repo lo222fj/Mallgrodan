@@ -1,55 +1,73 @@
 html {
- background-color: #fffacd;
- color: #1A4E19;
+ color: #402dbb;
 }
+
 .container {
  max-width: 960px;
  margin: 0 auto;
  padding: 0.5em;
  /*border: dotted 0.2em green;*/
+ box-shadow: 0.5em 0.5em 1.5em #000;
 }
+
 header {
  overflow: auto;
- border-top: double 0.2em #1A4E19;
- border-bottom: double 0.2em #1A4E19;
- padding: 0.5em 0;
+ border-top: double 0.2em #402dbb;
+ border-bottom: double 0.2em #402dbb;
+ margin-bottom: 0.5em;
+ padding: 0.2em 0;
 }
+
 header, .container, section {
-  background-color: #ffffff;
+ background-color: #ffffff;
 }
+
 input[type="button"] {
  background-color: #fff;
- color: #1A4E19;
+ color: #402dbb;
 }
+
 input {
  border-radius: 0.4em;
 }
+
 h1 {
  width: 30%;
  float: left;
-display: inline-block;
-vertical-align: middle;
+ display: inline-block;
+ vertical-align: middle;
+ margin: 0.5em 0;
 }
+
 #loginDiv {
  float: right;
  width: 250px;
 }
-#loginDiv input {
- font-size: 0.6em;
- margin-right: 0.3em;
-}
-#loginDiv p {
- margin: 0.3em 0 0.3em 0;
-}
+
+ #loginDiv input {
+  font-size: 0.6em;
+  margin-right: 0.3em;
+ }
+
+ #loginDiv p {
+  margin: 0.3em 0 0.3em 0;
+ }
+
 section {
- margin: 0 auto;
- overflow: auto;
- padding: 0.5em 0em 0.2em 0em;
- height: 100%;
+margin: 0 auto;
+overflow: auto;
+padding: 0;
+height: 95%;
+border: inset 0.1em #402dbb;
 }
+
  section input {
   font-size: 0.8em;
  }
+ section p {
+ margin:0;
+ }
+
 #content {
  /*border: dashed 0.1em red;*/
  overflow: auto;
@@ -60,28 +78,45 @@ section {
  float: left;
  margin-bottom: 0;
 }
+
 #functions {
  width: 20%;
  float: right;
 }
+
 #layoutChoise p, #colorChoise p {
  margin: 0;
  padding-top: 0.3em;
 }
+
 #administrateTemplates {
- margin-top: 1em;
+ margin-top: 2em;
 }
+
 #templateToAdministrate, #viewTemplates {
  display: block;
 }
-#subcontainers {
- overflow: auto;
+#templateToAdministrate {
+ max-width: 80%;
 }
+
+#savedTemplates {
+ margin: 0.5em 0;
+}
+
+ #savedTemplates li {
+ }
+
+#subcontainers {
+overflow: auto;
+height: 350px;
+}
+
 .subcontainer {
- width: 47%;
- max-width: 450px;
- line-height: 1em;
- margin-top: 1em;
+width: 49%;
+line-height: 1em;
+margin-top: 1em;
+height: 90%;
 }
 
 .subcontainerLeft {
@@ -93,35 +128,43 @@ section {
 }
 
 #textareaCss {
- width: 100%;
- font-family: monospace;
- height: 100%;
-  font-size: 85%;
+width: 98%;
+font-family: monospace;
+height: 81%;
+font-size: 85%;
+color: #402dbb;
 }
+
 #textareaHtml {
- width: 100%;
- font-family: monospace;
- height: 100%;
- font-size: 85%;
+width: 98%;
+font-family: monospace;
+height: 92%;
+font-size: 85%;
 }
-#administrateTemplates{
+
+#administrateTemplates {
  display: none;
 }
+
 #html pre {
  word-wrap: break-word;
  font-family: monospace;
 }
+
 .errorMessage {
  color: #661818;
 }
+
 .correctMessage {
  color: #1A4E19;
 }
+
 footer {
  text-align: center;
  clear: both;
- padding: 1em 0; 
+ padding: 1em 0;
 }
+
  footer p {
   margin: 0;
  }
