@@ -170,11 +170,12 @@ function loadCssTemplateFromFirebase() {
   console.log(css);
 
   if (exists) {
-   $('#html').text('');
+   $('#textareaHtml').val('');
    $('#textareaCss').val(css);
    $('#templateToAdministrate').val('');
 
    var codeHtml = loadHtmlDoc();
+   $('#textareaHtml').val(codeHtml);
    loadResult(codeHtml, css);
    emptyTemplateMessage();
   }
