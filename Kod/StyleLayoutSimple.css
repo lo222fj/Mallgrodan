@@ -25,10 +25,7 @@ a {
  padding: 0.5em 1em 0 1em;
  text-decoration: none;
 }
- a:first-child {
- 
- }
-#content, header, nav {
+ #content, header, nav {
  padding-left: 0.5em;
 }
 article {

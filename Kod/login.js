@@ -13,9 +13,14 @@ var auth = new FirebaseSimpleLogin(firebase, function (error, user) {
  if (error) {
   switch (error.code) {
    case 'INVALID_EMAIL': messages(loginMessage, "Felaktig mailadress", "errorMessage")
+    break;
    case 'EMAIL_TAKEN': messages(loginMessage, "Angiven mailadress är upptagen", "errorMessage")
+    break;
    case 'INVALID_USER': messages(loginMessage, "Användaren finns inte hos Mallgrodan", "errorMessage")
+    break;
    case 'INVALID_PASSWORD': messages(loginMessage, "Lösenordet stämmer inte med användaren", "errorMessage")
+    break;
+   default: messages(loginMessage, "Ett fel inträffade");
   }
   console.log(error);
  } else if (user) {
@@ -30,13 +35,18 @@ var auth = new FirebaseSimpleLogin(firebase, function (error, user) {
    logout();
   });
   $('#loginButton').remove();
-  //$('#password').remove();
-  //$('#email').remove();
-
  }
  else {
   loggedInUserEmail = '';
   messages(loginMessage, 'Du är inte inloggad', 'correctMessage');
+
+  $('#administrateTemplates').css('display', 'none');
+
+  $('#logoutButton').remove();
+  $('#createUser').before($('<input id="loginButton" type="button" value="Logga in" />'));
+  $('#loginButton').on('click', function () {
+   login();
+  });
 
   console.log('Nope, no logged in user.');
  }
@@ -58,19 +68,19 @@ function createUser() {
    userRef.set('mitt användarnamn är ' + userId);
 
    console.log('User Id: ' + user.uid + ', Email: ' + user.email);
-
-   //$('#createUser').remove();
-   //$('#password').remove();
-   //$('#email').remove();
-
   }
   else {
-   messages(loginMessage, 'Det gick tyvärr inte att skapa en ny användare!', 'errorMessage');
+   switch (error.code) {
+    case 'INVALID_EMAIL': messages(loginMessage, "Felaktig mailadress", "errorMessage")
+     break;
+    case 'EMAIL_TAKEN': messages(loginMessage, "Angiven mailadress är upptagen", "errorMessage")
+     break;
+    default: messages(loginMessage, 'Det gick tyvärr inte att skapa en ny användare!', 'errorMessage')
+   }
    console.log(error);
   }
   resetFields();
  });
-
  //console.log(userId + 'sist i createUser');
 }
 
@@ -87,8 +97,6 @@ function prepareLogin() {
 
  loginDiv.prepend($('<input id="password" type="password" placeholder="Lösenord" />'));
  loginDiv.prepend($('<input id="email" placeholder="email" />'));
-
- //$('#password').css('display', 'block');
 }
 
 function login() {
@@ -99,15 +107,6 @@ function login() {
   password: password.value
  });
 
- ////Knappar
- //loginDiv.prepend($('<input id="logoutButton" type="button" value="Logga ut" />'));
- //$('#logoutButton').on('click', function() {
- //     logout(); 
- // });
- //$('#loginButton').remove();
- //$('#password').remove();
- //$('#email').remove();
-
  console.log(loggedInUserEmail + ' sist i login');
  resetFields();
 }
@@ -115,17 +114,7 @@ function login() {
 function logout() {
  console.log('i logout');
  auth.logout();
- $('#administrateTemplates').css('display', 'none');
-
- $('#logoutButton').remove();
- $('#createUser').before($('<input id="loginButton" type="button" value="Logga in" />'));
- $('#loginButton').on('click', function () {
-  login();
- });
-
- //$('#loginLinks').append($('<a id="loginLink" href="#">Logga in</a>'));
- //$('#loginLinks').append($('<a id="newUserLink" href="#">Ny användare</a>'));
-}
+ }
 
 function saveCssTemplateToFirebase() {
  console.log(loggedInUserEmail);
