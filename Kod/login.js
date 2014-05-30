@@ -27,7 +27,10 @@ var auth = new FirebaseSimpleLogin(firebase, function (error, user) {
   loggedInUserEmail = user.email;
   messages(loginMessage, 'Du är inloggad som ' + user.email, 'correctMessage');
   console.log('I auth: User Id: ' + user.uid + ', Provider: ' + user.provider);
+
+  //visar knappar för mallhantering och döljer info-meddelande
   $('#administrateTemplates').css('display', 'block');
+  $('#saveInfo').css('display', 'none');
 
   //Knappar
   $('#createUser').before($('<input id="logoutButton" type="button" value="Logga ut" />'));
@@ -36,17 +39,29 @@ var auth = new FirebaseSimpleLogin(firebase, function (error, user) {
   });
   $('#loginButton').remove();
  }
+ //Användaren inte inloggad
  else {
   loggedInUserEmail = '';
-  messages(loginMessage, 'Du är inte inloggad', 'correctMessage');
-
-  $('#administrateTemplates').css('display', 'none');
 
   $('#logoutButton').remove();
   $('#createUser').before($('<input id="loginButton" type="button" value="Logga in" />'));
   $('#loginButton').on('click', function () {
    login();
   });
+
+  messages(loginMessage, 'Du är inte inloggad', 'correctMessage');
+  
+  //visar infomeddelande och döljer knappar för mallhantering
+  $('#administrateTemplates').css('display', 'none');
+  $('#saveInfo').css('display', 'block');
+  //rensar lista på sparade mallar
+  var savedTemplates = $('#savedTemplates');
+  var hideTemplates = $('#hideTemplates');
+  var viewTemplates = $('#viewTemplates');
+  savedTemplates.empty();
+  //
+  viewTemplates.css('display', 'block');
+  $('#hideTemplates').remove();
 
   console.log('Nope, no logged in user.');
  }
@@ -115,7 +130,6 @@ function logout() {
  console.log('i logout');
  auth.logout();
  }
-
 function saveCssTemplateToFirebase() {
  console.log(loggedInUserEmail);
  var name = $('#templateToAdministrate').val();
@@ -134,8 +148,6 @@ function saveCssTemplateToFirebase() {
  }
  $('#templateToAdministrate').val('');
 }
-
-
 function loadCssTemplateFromFirebase() {
  var currentUser = firebase.child(('user/' + loggedInUserEmail.toString()).replace('.', ' '));
  console.log(currentUser);

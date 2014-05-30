@@ -89,7 +89,7 @@ border: inset 0.1em #402dbb;
  padding-top: 0.3em;
 }
 
-#administrateTemplates {
+#administrateTemplates, #saveInfo {
  margin-top: 2em;
 }
 
