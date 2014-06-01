@@ -58,7 +58,10 @@ var auth = new FirebaseSimpleLogin(firebase, function (error, user) {
   var savedTemplates = $('#savedTemplates');
   var hideTemplates = $('#hideTemplates');
   var viewTemplates = $('#viewTemplates');
+  var templateMessage = $('#templateMessage');
   savedTemplates.empty();
+  templateMessage.empty();
+
   //
   viewTemplates.css('display', 'block');
   $('#hideTemplates').remove();
