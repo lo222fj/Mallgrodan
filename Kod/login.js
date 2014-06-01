@@ -184,6 +184,7 @@ function loadCssTemplateFromFirebase() {
    emptyTemplateMessage();
   }
   else {
+   $('#templateToAdministrate').val('');
    messages(templateMessage, 'Det finns ingen sparad mall med namnet ' + name, 'errorMessage');
   }
  }, function (error) {
