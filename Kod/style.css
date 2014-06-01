@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Gloria+Hallelujah);
 html {
  color: #402dbb;
 }
@@ -15,9 +16,22 @@ header {
  border-top: double 0.2em #402dbb;
  border-bottom: double 0.2em #402dbb;
  margin-bottom: 0.5em;
- padding: 0.2em 0;
+ padding: 0.2em 0.5em 0.2em 1.5em;
 }
 
+#header {
+ display: inline-block;
+  text-align: center;
+   vertical-align: middle;
+}
+#logo {
+ display: inline-block;
+
+}
+#loginDiv {
+ float: right;
+ width: 250px;
+}
 header, .container, section {
  background-color: #ffffff;
 }
@@ -30,20 +44,23 @@ input[type="button"] {
 input {
  border-radius: 0.4em;
 }
-
+.mallgrodan {
+ height: 3.7em;
+ width: 3em;
+ vertical-align: bottom;
+}
 h1 {
- width: 30%;
- float: left;
+ font-family: 'Gloria Hallelujah', cursive;
+ font-size: 2em;
  display: inline-block;
  vertical-align: middle;
- margin: 0.5em 0;
-}
+ margin: 0 0.5em;
+ text-shadow: 0.1em 0.1em 0.2em #000, 0 0 0.3em #1B6E15, 0 0 0.2em #1B6E15, 0 0 0.1em #1B6E15;
+ /*text-shadow: 1px 1px 2px black, 0 0 0.2em #402dbb, 0 0 0.2em #402dbb;*/
 
-#loginDiv {
- float: right;
- width: 250px;
+  color: white;
+/*  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.5)), color-stop(50%, rgba(0,0,0,0.7)), to(rgba(0,0,0,0.3)));*/
 }
-
  #loginDiv input {
   font-size: 0.6em;
   margin-right: 0.3em;
@@ -54,24 +71,26 @@ h1 {
  }
 
 section {
-margin: 0 auto;
-overflow: auto;
-padding: 0;
-height: 95%;
-border: inset 0.1em #402dbb;
+ margin: 0 auto;
+ overflow: auto;
+ padding: 0;
+ height: 95%;
+ border: inset 0.1em #402dbb;
 }
 
  section input {
   font-size: 0.8em;
  }
+
  section p {
- margin:0;
+  margin: 0;
  }
 
 #content {
  /*border: dashed 0.1em red;*/
  overflow: auto;
 }
+
 #iframeResult {
  width: 78%;
  min-height: 18em;
@@ -96,6 +115,7 @@ border: inset 0.1em #402dbb;
 #templateToAdministrate, #viewTemplates {
  display: block;
 }
+
 #templateToAdministrate {
  max-width: 80%;
 }
@@ -108,15 +128,15 @@ border: inset 0.1em #402dbb;
  }
 
 #subcontainers {
-overflow: auto;
-height: 350px;
+ overflow: auto;
+ height: 350px;
 }
 
 .subcontainer {
-width: 49%;
-line-height: 1em;
-margin-top: 1em;
-height: 90%;
+ width: 49%;
+ line-height: 1em;
+ margin-top: 1em;
+ height: 90%;
 }
 
 .subcontainerLeft {
@@ -128,18 +148,18 @@ height: 90%;
 }
 
 #textareaCss {
-width: 98%;
-font-family: monospace;
-height: 81%;
-font-size: 85%;
-color: #402dbb;
+ width: 98%;
+ font-family: monospace;
+ height: 81%;
+ font-size: 85%;
+ color: #402dbb;
 }
 
 #textareaHtml {
-width: 98%;
-font-family: monospace;
-height: 92%;
-font-size: 85%;
+ width: 98%;
+ font-family: monospace;
+ height: 92%;
+ font-size: 85%;
 }
 
 #administrateTemplates {
