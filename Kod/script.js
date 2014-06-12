@@ -121,12 +121,9 @@ window.onload = function () {
  //Laddar rutorna för Html, Css och Resultat
  var codeHtml = loadHtmlDoc();
  var codeLayout = getCssLayout("StyleLayoutSimple.css");
- //console.log(codeLayout);
  var codeColor = getCssColor("StyleBlackWhiteColor.css");
- //Sconsole.log(codeColor);
  var codeCss = codeColor + codeLayout;
  loadCss(codeCss);
- //console.log(codeCss);
  loadResult(codeHtml, codeCss);
 
  $('#buttonUpdateCss').on('click', function () {

@@ -261,7 +261,6 @@ function messages(messageType, message, messageClass) {
 function emptyTemplateMessage() {
  templateMessage.text('');
 }
-
 function resetFields() {
  $('#email').val('');
  $('#password').val('');

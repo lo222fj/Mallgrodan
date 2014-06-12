@@ -2,7 +2,6 @@
 html {
  color: #402dbb;
 }
-
 .container {
  max-width: 960px;
  margin: 0 auto;
@@ -10,7 +9,6 @@ html {
  /*border: dotted 0.2em green;*/
  box-shadow: 0.5em 0.5em 1.5em #000;
 }
-
 header {
  overflow: auto;
  border-top: double 0.2em #402dbb;
@@ -18,7 +16,6 @@ header {
  margin-bottom: 0.5em;
  padding: 0.2em 0.5em 0.2em 1.5em;
 }
-
 #header {
  display: inline-block;
   text-align: center;
@@ -35,12 +32,10 @@ header {
 header, .container, section {
  background-color: #ffffff;
 }
-
 input[type="button"] {
  background-color: #fff;
  color: #402dbb;
 }
-
 input {
  border-radius: 0.4em;
 }
@@ -56,20 +51,16 @@ h1 {
  vertical-align: middle;
  margin: 0 0.5em;
  text-shadow: 0.1em 0.1em 0.2em #000, 0 0 0.3em #1B6E15, 0 0 0.2em #1B6E15, 0 0 0.1em #1B6E15;
- /*text-shadow: 1px 1px 2px black, 0 0 0.2em #402dbb, 0 0 0.2em #402dbb;*/
-
   color: white;
-/*  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.5)), color-stop(50%, rgba(0,0,0,0.7)), to(rgba(0,0,0,0.3)));*/
 }
  #loginDiv input {
   font-size: 0.6em;
   margin-right: 0.3em;
  }
-
  #loginDiv p {
   margin: 0.3em 0 0.3em 0;
+  font-size: 0.9em;
  }
-
 section {
  margin: 0 auto;
  overflow: auto;
@@ -77,7 +68,6 @@ section {
  height: 95%;
  border: inset 0.1em #402dbb;
 }
-
  section input {
   font-size: 0.8em;
  }
@@ -90,7 +80,6 @@ section {
  /*border: dashed 0.1em red;*/
  overflow: auto;
 }
-
 #iframeResult {
  width: 78%;
  min-height: 18em;
@@ -102,12 +91,10 @@ section {
  width: 20%;
  float: right;
 }
-
 #layoutChoise p, #colorChoise p {
  margin: 0;
  padding-top: 0.3em;
 }
-
 #administrateTemplates, #saveInfo {
  margin-top: 2em;
 }
@@ -119,11 +106,9 @@ section {
 #templateToAdministrate {
  max-width: 80%;
 }
-
 #savedTemplates {
  margin: 0.5em 0;
 }
-
  #savedTemplates li {
  }
 
@@ -131,7 +116,6 @@ section {
  overflow: auto;
  height: 350px;
 }
-
 .subcontainer {
  width: 49%;
  line-height: 1em;
@@ -142,11 +126,9 @@ section {
 .subcontainerLeft {
  float: left;
 }
-
 .subcontainerRight {
  float: right;
 }
-
 #textareaCss {
  width: 98%;
  font-family: monospace;
@@ -154,37 +136,30 @@ section {
  font-size: 85%;
  color: #402dbb;
 }
-
 #textareaHtml {
  width: 98%;
  font-family: monospace;
  height: 92%;
  font-size: 85%;
 }
-
 #administrateTemplates {
  display: none;
 }
-
 #html pre {
  word-wrap: break-word;
  font-family: monospace;
 }
-
 .errorMessage {
  color: #661818;
 }
-
 .correctMessage {
  color: #1A4E19;
 }
-
 footer {
  text-align: center;
  clear: both;
  padding: 1em 0;
 }
-
  footer p {
   margin: 0;
  }
